@@ -7,9 +7,4 @@ RUN apt-get update && apt-get install -y curl && apt-get clean
 RUN groupadd meteor && adduser --ingroup meteor --disabled-password --gecos "" --home /home/meteor meteor
 
 # Installing meteor
-USER meteor
 RUN curl https://install.meteor.com/ | sh
-
-# Linking meteor
-USER root
-RUN ln -s /home/meteor/.meteor/meteor /usr/local/bin/
