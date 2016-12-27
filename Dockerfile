@@ -1,6 +1,15 @@
-FROM mhart/alpine-node:latest
+FROM ubuntu:16.10
 
-RUN apk add --update bash curl && \
-    rm -rf /var/cache/apk/*
+# Install curl
+RUN apt-get update && apt-get install -y curl && apt-get clean
 
+# Add a user and a group called meteor
+RUN groupadd meteor && adduser --ingroup meteor --disabled-password --gecos "" --home /home/meteor meteor
+
+# Installing meteor
+USER meteor
 RUN curl https://install.meteor.com/ | sh
+
+# Linking meteor
+USER root
+RUN ln -s /home/meteor/.meteor/meteor /usr/local/bin/
