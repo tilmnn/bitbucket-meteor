@@ -2,8 +2,8 @@ FROM ubuntu:16.10
 
 RUN apt-get update
 
-# Install curl, bzip2 and libfontconfig (an undocumented dependency of phantomjs)
-RUN apt-get install -y curl bzip2 libfontconfig
+# Install curl, bzip2 and libfontconfig (an undocumented dependency of phantomjs) and git
+RUN apt-get install -y curl bzip2 libfontconfig git
 
 # Install build-tools
 RUN apt-get install -y bcrypt make python g++
